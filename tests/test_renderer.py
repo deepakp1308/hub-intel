@@ -20,8 +20,9 @@ class TestReportRenderer:
     def test_to_html_contains_styles(self, sample_markdown):
         renderer = ReportRenderer()
         html = renderer.to_html(sample_markdown)
-        assert "--navy: #162251" in html
-        assert "Inter" in html
+        assert "Arial" in html
+        assert "--black: #000000" in html
+        assert "--dark-gray: #333333" in html
 
     def test_to_html_renders_tables(self, sample_markdown):
         renderer = ReportRenderer()

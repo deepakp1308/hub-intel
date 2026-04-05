@@ -5,28 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HUB-INTEL | Week of April 4, 2026</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 :root {
-    --navy: #162251;
-    --page-bg: #f0f4f8;
-    --primary-text: #1a1f36;
-    --secondary-text: #6b7c93;
-    --accent-blue: #0070d2;
-    --ai-teal: #00b9a9;
-    --chart-navy: #1e3a6e;
-    --green: #1aab68;
-    --red: #d13438;
-    --card-border: #e8edf5;
+    --black: #000000;
+    --dark-gray: #333333;
+    --mid-gray: #666666;
+    --light-gray: #999999;
+    --border-gray: #cccccc;
+    --bg-gray: #f5f5f5;
+    --row-alt: #fafafa;
+    --header-bg: #222222;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
-    background: var(--page-bg);
-    color: var(--primary-text);
-    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    background: #ffffff;
+    color: var(--black);
+    line-height: 1.55;
     padding: 0;
 }
 
@@ -37,87 +34,82 @@ body {
 }
 
 .report-header {
-    background: var(--navy);
-    color: white;
-    padding: 32px 40px;
-    border-radius: 12px 12px 0 0;
+    background: var(--header-bg);
+    color: #ffffff;
+    padding: 28px 36px;
+    border-radius: 4px 4px 0 0;
     margin-bottom: 0;
 }
 
 .report-header h1 {
-    font-size: 28px;
+    font-size: 22pt;
     font-weight: 700;
     margin-bottom: 4px;
-    letter-spacing: -0.5px;
     color: #ffffff !important;
 }
 
 .report-header .subtitle {
-    font-size: 13px;
-    opacity: 0.8;
+    font-size: 9pt;
+    color: #cccccc;
 }
 
 .report-body {
-    background: white;
-    padding: 40px;
-    border-radius: 0 0 12px 12px;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 2px 8px rgba(26,40,96,0.06);
+    background: #ffffff;
+    padding: 36px;
+    border-radius: 0 0 4px 4px;
+    border: 1px solid var(--border-gray);
 }
 
-h1 { font-size: 24px; font-weight: 700; margin: 0 0 16px 0; color: var(--primary-text); }
-h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px 0; color: var(--navy); border-bottom: 2px solid var(--card-border); padding-bottom: 8px; }
-h3 { font-size: 15px; font-weight: 600; margin: 20px 0 8px 0; color: var(--primary-text); }
+h1 { font-size: 18pt; font-weight: 700; margin: 0 0 14px 0; color: var(--black); }
+h2 { font-size: 13pt; font-weight: 700; margin: 28px 0 10px 0; color: var(--black); border-bottom: 2px solid var(--dark-gray); padding-bottom: 6px; }
+h3 { font-size: 11pt; font-weight: 700; margin: 18px 0 6px 0; color: var(--dark-gray); }
 
-p { margin: 0 0 12px 0; font-size: 14px; color: var(--primary-text); }
+p { margin: 0 0 10px 0; font-size: 10pt; color: var(--black); }
 
-strong { font-weight: 600; }
+strong { font-weight: 700; color: var(--black); }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 16px 0;
-    font-size: 13px;
+    margin: 14px 0;
+    font-size: 9pt;
 }
 
 th {
-    background: var(--navy);
-    color: white;
-    padding: 10px 12px;
+    background: var(--dark-gray);
+    color: #ffffff;
+    padding: 8px 10px;
     text-align: left;
-    font-weight: 600;
-    font-size: 12px;
+    font-weight: 700;
+    font-size: 8pt;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--card-border);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-gray);
     vertical-align: top;
+    color: var(--black);
 }
 
 tr:nth-child(even) td {
-    background: #f8fafd;
+    background: var(--row-alt);
 }
 
 hr {
     border: none;
-    border-top: 1px solid var(--card-border);
-    margin: 24px 0;
+    border-top: 1px solid var(--border-gray);
+    margin: 20px 0;
 }
 
-em { color: var(--secondary-text); font-size: 12px; }
-
-.priority-red { color: var(--red); font-weight: 600; }
-.priority-yellow { color: #d4a017; font-weight: 600; }
-.priority-green { color: var(--green); font-weight: 600; }
+em { color: var(--mid-gray); font-size: 9pt; }
 
 @media print {
     body { background: white; }
     .report-container { padding: 0; max-width: 100%; }
     .report-header { border-radius: 0; }
-    .report-body { border: none; box-shadow: none; border-radius: 0; }
+    .report-body { border: none; border-radius: 0; }
 }
 
 @page {
