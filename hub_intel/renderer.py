@@ -61,6 +61,7 @@ body {{
     font-weight: 700;
     margin-bottom: 4px;
     letter-spacing: -0.5px;
+    color: #ffffff !important;
 }}
 
 .report-header .subtitle {{
@@ -160,27 +161,44 @@ class ReportRenderer:
 
     def to_html(self, markdown_text: str, title: str = "HUB-INTEL") -> str:
         """Convert markdown brief to styled HTML."""
-        try:
-            import markdown as md
-            html_content = md.markdown(
-                markdown_text,
-                extensions=["tables", "fenced_code", "nl2br"],
-            )
-        except ImportError:
-            html_content = self._basic_md_to_html(markdown_text)
-
-        # Extract subtitle from first bold line
+        # Extract title and subtitle before stripping them from body
         subtitle = "HubSpot Competitive Intelligence | Mailchimp R&A + L2C | Confidential"
         for line in markdown_text.split("\n"):
             if line.startswith("**") and "Confidential" in line:
                 subtitle = line.strip("*").strip()
                 break
 
-        # Extract title from first H1
         for line in markdown_text.split("\n"):
             if line.startswith("# "):
                 title = line.lstrip("# ").strip()
                 break
+
+        # Strip the H1 title and bold subtitle from body to avoid duplication
+        body_lines = []
+        skip_next_blank = False
+        for line in markdown_text.split("\n"):
+            stripped = line.strip()
+            if stripped.startswith("# ") and title in stripped:
+                skip_next_blank = True
+                continue
+            if stripped.startswith("**") and "Confidential" in stripped:
+                skip_next_blank = True
+                continue
+            if skip_next_blank and stripped == "":
+                skip_next_blank = False
+                continue
+            skip_next_blank = False
+            body_lines.append(line)
+        body_md = "\n".join(body_lines)
+
+        try:
+            import markdown as md
+            html_content = md.markdown(
+                body_md,
+                extensions=["tables", "fenced_code", "nl2br"],
+            )
+        except ImportError:
+            html_content = self._basic_md_to_html(body_md)
 
         return HTML_TEMPLATE.format(
             title=title,
